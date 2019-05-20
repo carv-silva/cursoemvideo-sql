@@ -2,21 +2,34 @@ create database cadastro
 default character set utf8
 default collate utf8_general_ci;
 
-create table pessoas(
-    id int not null auto_increment,
-    nome varchar(30) not null,
-    nascimento date,
-    sexo enum('M', 'F'),
-    peso decimal(5,2),
-    altura decimal (3,2),
-    nacionalidade varchar (20) default 'Brasil',
+use cadastro;
+
+create table pessoas (
+	id int not null auto_increment,
+	nome varchar(30) not null,
+	nascimento date,
+	sexo enum ('M', 'F'),
+	peso decimal(5,2),
+	altura decimal(3,2),
+    nacionalidade varchar(20) default 'Brasil',
     primary key(id)
-)default charset = utf8;
+) default charset = utf8;
+
 
 insert into pessoas
-(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+(nome, nascimento, sexo, peso, altura, nacionalidade)
 values
-(DEFAULT, 'CREUZA', '1920-12-30', 'F', '50.2', '1.62', DEFAULT);
+('Maria', '1980-02-015','F','55.2', '1.83', 'Brasil');
+
+alter table pessoas
+add column profissao varchar(10) not null after nome; /*adiciona campo dps do nome*/
+
+alter table pessoas
+drop column profissao;/*apaga a coluna profissao*/
+
+alter table pessoas
+modify column profissao varchar(20) default '' ;
+
 select * from pessoas;
 
-///teste
+desc pessoas;
