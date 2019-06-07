@@ -1,0 +1,10 @@
+ddl = data definittion language == CREATE DATABASE
+                                == CREATE TABLE
+                                == ALTER TABLE
+                                == DROP TABLE 
+
+dml = data manipulattion language == INSERT INTO
+								  == UPDATE 
+								  == DELETE
+								  == TRUNCATE
+
