@@ -121,6 +121,70 @@ show tables; -- mostra as tabelas
 select * from cursos;
 
 
+///aula 10 phpmyadmin/// 
+
+create table amigos (
+	id int not null auto_increment,
+	nome varchar(30) not null,
+	telefone varchar(11),
+    primary key(id),
+    unique key (nome)
+) default charset = utf8;
+
+alter table amigos
+add sexo enum('M','F')not null after nome;
+
+insert into amigos 
+(id, nome, sexo, telefone) 
+values (NULL, 'Maria','F','2222-3333'), (NULL, 'Joao','M', '2222-3333'),
+(NULL, 'Jose','M','3333-2222'),(NULL, 'Ana','F','1111-2222');
+
+update amigos
+set telefone = '1111-2222'
+where id = '2';
+
+///aula 11 select///
+
+select * from cursos
+order  by nome; --> seleciona todos os dado da coluna nome por ordem alfabetica.  
+
+desc (nome da table)--->  mostra a tabela
+
+select * from cursos
+order  by nome desc(decrescente); --> aqui o desc serve para crescente inverter ordem alfabetica z-a 
+
+select nome, carga, ano from cursos
+order by ano, nome; --> aqui ele vai ordenar em forma crescente o ano dps o nome
+
+select * from cursos
+where ano = '2016' -->  mostra na tabela somente cursos quem tem ano de 2016.
+order by 'nome';
+
+
+select nome, carga from cursos
+where ano = '2016'              --> nessa consulta ele nao mostra o campo 2016, 
+order by 'nome';				pois ele ja tem conhecimento que todos os cursos que vc pesquisou sao de 2016
+
+
+result set --> nome tecnico para os dados que retorna de uma consulta
+
+query --> é um pedido de uma informação ou de um dado. 
+Esse pedido também pode ser entendido como uma consulta, uma solicitação ou, ainda, uma requisição. 
+
+// operadores relacionais//
+
+select nome, descricao from cursos
+where ano <= '2015' --> aqui ele vai selecionar todos os cursos menor ou igual a 2015 
+order by nome;			no mesmo sentindo que nao vai aparecer a coluna de 2015 e 2014 pq ele ja sabe
+
+
+
+
+
+
+
+
+
 
 
 
