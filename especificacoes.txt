@@ -1,10 +1,46 @@
-ddl = data definittion language == CREATE DATABASE
-                                == CREATE TABLE
-                                == ALTER TABLE
-                                == DROP TABLE 
+ddl = data definittion language 
+CREATE DATABASE
+CREATE TABLE
+ALTER TABLE
+DROP TABLE 
+DROP PODE SER UM COMANDO OU UM PARAMETRO
+COMANDO: SOZINHO APAGA TABELA, DATABASE, ETC .. EX:drop table cursos; /*apaga tabelas*/
+PARAMETRO: APAGA UM CAMPO, UMA COLUNA. EX:alter table cursos drop column idcurso;	
 
-dml = data manipulattion language == INSERT INTO
-								  == UPDATE 
-								  == DELETE
-								  == TRUNCATE
+dml = data manipulattion language 
+INSERT INTO
+UPDATE 
+DELETE
+TRUNCATE
 
+
+#==#===#====#===#==#===#====#===#==#===#====#===ModoTerminal#==#===#====#===#==#===#====#===#==#===#====#===
+
+mysql -h localhost -u root -p
+--> senha da configuraçao
+
+mysql      -- evocamos o servidor
+-h         -- dizemos que o próximo dado é referente ao host
+localhost  -- informamos o o host
+-u         -- dizemos que o próximo dado é referente ao usuário
+root       -- informamos o usuário
+-p         -- dizemos que o próximo dado é referente a senha
+
+exit --> sair do MySQL
+
+
+status ---> verifica qual databases esta sendo usado no momento
+
+Current database:	cadastro --> mostra qual esta 
+
+\! cls no windows --> limpa a tela
+
+\! clear no linux --> limpa a tela
+
+
+mysqldump -u root -p exemplo(o banco que quer fazer copia) > /home/vinicius/dumps/exemplo.sql(caminho que quer salvar)  --> fazer bkp do banco 
+
+
+
+mysqldump -u root -p exemplo < /home/vinicius/dumps/exemplo.sql --> importa o banco 
+							
