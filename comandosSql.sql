@@ -162,8 +162,8 @@ order by 'nome';
 
 
 select nome, carga from cursos
-where ano = '2016'              --> nessa consulta ele nao mostra o campo 2016, 
-order by 'nome';				pois ele ja tem conhecimento que todos os cursos que vc pesquisou sao de 2016
+where ano = '2016' --> nessa consulta ele nao mostra o campo 2016, 
+order by 'nome'; -->pois ele ja tem conhecimento que todos os cursos que vc pesquisou sao de 2016
 
 
 result set --> nome tecnico para os dados que retorna de uma consulta
@@ -175,15 +175,12 @@ Esse pedido também pode ser entendido como uma consulta, uma solicitação ou, 
 
 select nome, descricao from cursos
 where ano <= '2015' --> aqui ele vai selecionar todos os cursos menor ou igual a 2015 
-order by nome;			no mesmo sentindo que nao vai aparecer a coluna de 2015 e 2014 pq ele ja sabe
+order by nome; -->no mesmo sentindo que nao vai aparecer a coluna de 2015 e 2014 pq ele ja sabe
 
 
-
-
-
-
-
-
+select nome, ano from cursos
+where ano between '2014' and '2016' --> serve para selecionar dados entre ex: "anos" and "anos"
+order by ano desc, nome asc; --> order by significa ordenação	 entre dados		
 
 
 
