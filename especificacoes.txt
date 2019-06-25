@@ -11,8 +11,10 @@ dml = data manipulattion language
 INSERT INTO
 UPDATE 
 DELETE
-TRUNCATE
+TRUNCATE 
 
+dql = data query language 
+SELECT
 
 #==#===#====#===#==#===#====#===#==#===#====#===ModoTerminal#==#===#====#===#==#===#====#===#==#===#====#===
 
@@ -28,7 +30,6 @@ root       -- informamos o usuário
 
 exit --> sair do MySQL
 
-
 status ---> verifica qual databases esta sendo usado no momento
 
 Current database:	cadastro --> mostra qual esta 
@@ -37,10 +38,9 @@ Current database:	cadastro --> mostra qual esta
 
 \! clear no linux --> limpa a tela
 
-
 mysqldump -u root -p exemplo(o banco que quer fazer copia) > /home/vinicius/dumps/exemplo.sql(caminho que quer salvar)  --> fazer bkp do banco 
 
-
-
 mysqldump -u root -p exemplo < /home/vinicius/dumps/exemplo.sql --> importa o banco 
+
+
 							
