@@ -64,7 +64,6 @@ desc cursos;
 
 drop table cursos; /*apaga tabelas*/
 
-
 select * from  teste;
 select * from  cursos;
 
@@ -100,7 +99,6 @@ set nome = 'Java', carga = '40', ano = '2015'
 where idcurso = '5'
 limit 1;/*limita a alteração apenas para uma linha*/
 
-
 delete from cursos
 where idcurso = '10';
 
@@ -111,7 +109,6 @@ drop database cadastro; -- apagando para verificar se  o bkp funcionou
 use cadatro;
 select * from cursos;
 
-
 /*apaga o banco e restaura usando o bkp*/
 
 use cadastro;
@@ -119,7 +116,6 @@ use cadastro;
 show tables; -- mostra as tabelas
 
 select * from cursos;
-
 
 ///aula 10 phpmyadmin/// 
 
@@ -148,7 +144,7 @@ where id = '2';
 select * from cursos
 order  by nome; --> seleciona todos os dado da coluna nome por ordem alfabetica.  
 
-desc (nome da table)--->  mostra a tabela
+desc (nome da table) --->  mostra a tabela
 
 select * from cursos
 order  by nome desc(decrescente); --> aqui o desc serve para crescente inverter ordem alfabetica z-a 
@@ -160,11 +156,9 @@ select * from cursos
 where ano = '2016' -->  mostra na tabela somente cursos quem tem ano de 2016.
 order by 'nome';
 
-
 select nome, carga from cursos
 where ano = '2016' --> nessa consulta ele nao mostra o campo 2016, 
 order by 'nome'; -->pois ele ja tem conhecimento que todos os cursos que vc pesquisou sao de 2016
-
 
 result set --> nome tecnico para os dados que retorna de uma consulta
 
@@ -177,10 +171,27 @@ select nome, descricao from cursos
 where ano <= '2015' --> aqui ele vai selecionar todos os cursos menor ou igual a 2015 
 order by nome; -->no mesmo sentindo que nao vai aparecer a coluna de 2015 e 2014 pq ele ja sabe
 
-
 select nome, ano from cursos
 where ano between '2014' and '2016' --> serve para selecionar dados entre ex: "anos" and "anos"
-order by ano desc, nome asc; --> order by significa ordenação	 entre dados		
+order by ano desc, nome asc; --> order by significa ordenação entre dados	
+
+select nome, descricao, ano from cursos
+where ano in (2014, 2016) --> aqui ele vai mostra a saida de dados entre 2014 e 2016
+order by ano, nome; --> ordenando em ano e dps nome order alfabetica e dps numeros crescente.
+
+select * from cursos
+where carga > 35 and totaulas < 30
+order by ano, nome; 
+
+select nome, carga, totaulas from cursos
+where carga > 35 and totaulas < 30; --> aqui ele vai retorna os dados somente qnd tiver
+										 carga maior que 35 e totalaulas menos que 30.
+ 
+select nome, carga, totaulas from cursos
+where carga > 35 or totaulas < 30; --> aqui ele vai retorna os dados somente qnd tiver
+									  valor de carga maior que 35 ou totalaulas menor que 30 (um ou outro).
+
+
 
 
 
