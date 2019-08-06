@@ -15,7 +15,6 @@ create table pessoas (
     primary key(id)
 ) default charset = utf8;
 
-
 insert into pessoas
 (nome, nascimento, sexo, peso, altura, nacionalidade)
 values
@@ -102,7 +101,7 @@ limit 1;/*limita a alteração apenas para uma linha*/
 delete from cursos
 where idcurso = '10';
 
-truncate table cursos; /*remove todas linhas*/
+truncate table cursos; x/*remove todas linhas*/
 
 drop database cadastro; -- apagando para verificar se  o bkp funcionou
 
@@ -191,12 +190,105 @@ select nome, carga, totaulas from cursos
 where carga > 35 or totaulas < 30; --> aqui ele vai retorna os dados somente qnd tiver
 									  valor de carga maior que 35 ou totalaulas menor que 30 (um ou outro).
 
+--------------####------------------Curso MySQL #12 - SELECT (Parte 2)--------------####------------------
 
+LIKE --> significa parecido geralmente é usando junto com % que significa nenhum ou varios caracteres
+ex: 
+select * from cursos
+where nome like 'p%'; --> aqui ele ira retorna a consulta como todos nomes que começa com p 
+que no caso o % ele representa qualquer conjunto de caractere que vem pela frente 
+obs: precisa do % e ele é sensitive case , e se vc colocar o % no começo da palvra ele busca os 
+nome que tenha a letra so no fina da palavra
 
+select * from cursos
+where nome like '%a%'; --> aqui ele vai retorna qualquer nome que teja a palavra a por causa do %
 
+select * from cursos
+where nome not like '%a%'; --> vai retorna nome sem a letra 
 
+select * from cursos
+where nome not like '%a%';
 
+update cursos set nome = 'Poo' 
+where idcurso = '9';  --> muda o valor do nome para Poo atraves do id 
+
+select * from  cursos 
+where nome like 'ph%p'; --> retorna todos os nome que tenha ph no comeco 
+
+select * from  cursos 
+where nome like 'ph%p%'; --> retorna todos curso  que tenha ph no comeco e tenha algum dado dps do p ex: php7
  
+select * from  cursos 
+where nome like 'ph%p_'; --> retorno todos os cursos com nome que comeca com ph termina com p e tenha alguma coisa no final
+
+
+
+select * from  gafanhotos 
+where nome like '%silva%'; --> retorna todos os nomes que tenha silva ou que comece
+
+select * from  gafanhotos 
+where nome like '%_silva%'; --. retorna todos os nome que tenha sobrenome silva
+
+select * from  gafanhotos 
+where nome like '%silva'; --> termina com silva
+
+select * from  gafanhotos 
+where nome like 'silva%'; -- comeca com silva
+
+select  nacionalidade from gafanhotos; --> retorna todas nacionalidades da tabela
+
+select distinct carga from cursos; --> vai retorna so carga que nao repete valores iguais 
+
+select distinct nacionalidade from gafanhotos  --> retorna todas nacionalidades sem repedicao de valores
+order by nacionalidade; --> retorna em ordem alfabetica
+
+ select carga from cursos 
+ order by carga; --> retorna   todas horario de carga da tabela
+
+
+select distinct carga from cursos
+order by carga; --> retorna todas os horarios de carga sem repeticao 
+
+
+--- agregacao ---
+
+select * from cursos; --> retorna toda a tabela curso
+
+select count(*) from cursos; --> conta todos cursos que tem na tabela
+select count(nome) from cursos;--> mesmo resultado mais pode usar campo dentro do ()
+
+select * from cursos where carga > 30;
+
+select count(*) from cursos where carga > 30;
+
+
+select max(carga) from cursos; --> retorna o resultado da maior carga da tabela
+
+select max(totaulas) from cursos where ano = '2016'; --> dentro do curso de 2016 retorna o max numero de aulas 
+
+select min(totaulas) from cursos; --> retorna o min de aulas da tabela cursos
+
+select nome, min(totaulas) from cursos where ano = '2016'; --> nao ta funcionando nao sei pq
+
+select sum(totaulas) from cursos; --> retorna a soma do total de aulas 
+
+select sum(totaulas) from cursos where ano = '2016'; --> retorna a soma do total de aulas dos cursos onde o ano é 2016
+
+
+select avg(totaulas) from cursos; --> retorna a media do total de aulas
+
+select avg(totaulas) from cursos where ano = '2016'; --> retorna a media do total de aulas onde o curso e do ano de 2016
+
+######--exerc--####
+
+1 - 'Uma lista com o nome de todas as gafanhotas'
+2 - 'Uma lista com os dados de todas aquelas que nasceram entre 1/Jan/2000 e 31/Dez/2015'
+3 - 'Uma lista com o nome de todos os homens que trabalaham como Programadores'
+4 - 'Uma lista com os dados de todas as mulheres que nasceram no Brasil e que tem seu nome iniciando com a letra J'
+5 - 'Uma lista com o nome e nacionalidade de todos os homens que tem Silva no nome, nao nasceram no Brasil e pesam menos de 100 kg'
+6 - 'Qual e a maior altura entre gafanhotos homens que moram no brasil'
+7 - 'Qual e a media de peso dos gafanhotos cadastrados?'
+8 - ''
 
 
 

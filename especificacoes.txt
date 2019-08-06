@@ -42,5 +42,7 @@ mysqldump -u root -p exemplo(o banco que quer fazer copia) > /home/vinicius/dump
 
 mysqldump -u root -p exemplo < /home/vinicius/dumps/exemplo.sql --> importa o banco 
 
+obs: --> toda string em sql é em aspa simples 'exemplo'.
+
 
 							
