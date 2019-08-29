@@ -279,7 +279,7 @@ select avg(totaulas) from cursos; --> retorna a media do total de aulas
 
 select avg(totaulas) from cursos where ano = '2016'; --> retorna a media do total de aulas onde o curso e do ano de 2016
 
-######--exerc--####
+######--exerc--video-12####
 
 1 - 'Uma lista com o nome de todas as gafanhotas'
 2 - 'Uma lista com os dados de todas aquelas que nasceram entre 1/Jan/2000 e 31/Dez/2015'
@@ -288,7 +288,79 @@ select avg(totaulas) from cursos where ano = '2016'; --> retorna a media do tota
 5 - 'Uma lista com o nome e nacionalidade de todos os homens que tem Silva no nome, nao nasceram no Brasil e pesam menos de 100 kg'
 6 - 'Qual e a maior altura entre gafanhotos homens que moram no brasil'
 7 - 'Qual e a media de peso dos gafanhotos cadastrados?'
-8 - ''
+8 - 'Qual e o menor peso entre as gafanhotas mulheres que nasceram fora do brasil e entre 01/jan/1990 e 31/dez/2000?'
+9 - 'Quantas gafanhotos mulheres tem mais de 1.90m de altura?'
+
+
+1 - 
+select * from gafanhotos
+where sexo = 'F'; 
+
+2-
+select * from gafanhotos
+where nascimento between '2000-01-01' and '2015-12-31'; 
+
+3-
+select * from gafanhotos
+where profissao = 'Programador' and sexo = 'M'; 
+
+4-
+select * from gafanhotos
+where sexo = 'F' and nacionalidade = 'Brasil' and nome like 'J%';
+
+5-
+select nome, nacionalidade from gafanhotos
+where sexo = 'M' and nome like  '%silva%' and nacionalidade  not like '%Brasil%' and peso < 100;
+
+6-
+select max(altura)from gafanhotos
+where sexo = 'M' and nacionalidade = 'Brasil';
+
+7-
+select avg(peso) from gafanhotos;
+
+8-
+select min(peso) from gafanhotos
+where sexo = 'F' and nascimento between '1990-01-01' and '2000-12-31'; 
+
+9-
+select * from gafanhotos
+where sexo = 'F' and altura >'1.90';
+
+select count(*) from gafanhotos 
+where sexo = 'F' and altura >'1.90';
+
+
+---------------#Aula 13#---------------------
+Agrupando Registros
+
+select carga from cursos
+group by carga; -->nao repete o valor so pega um de cada apenas agrupando nao é igual o distict
+
+select carga, count(nome) from cursos 
+group by carga; --> ele retorna a quantidade de cursos que existe agrupado 
+
+select distinct totaulas from cursos
+order by totaulas;
+
+select totaulas, count(*) from cursos
+group by totaulas;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
