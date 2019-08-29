@@ -1,5 +1,4 @@
 sudo -u postgres psql
-password:admin
 
 SELECT datname FROM pg_database; --> lista todos os db 
 
