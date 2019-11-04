@@ -1,4 +1,4 @@
--- bkp do bd cadastro 23/10/2019 --
+-- bkp do bd cadastro 23/10/2019
 
 CREATE DATABASE  IF NOT EXISTS `cadastro` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `cadastro`;
