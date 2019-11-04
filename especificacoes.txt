@@ -1,24 +1,25 @@
-ddl = data definittion language 
+ddl = data definittion language
 CREATE DATABASE
 CREATE TABLE
 ALTER TABLE
-DROP TABLE 
+DROP TABLE
 DROP PODE SER UM COMANDO OU UM PARAMETRO
 COMANDO: SOZINHO APAGA TABELA, DATABASE, ETC .. EX:drop table cursos; /*apaga tabelas*/
-PARAMETRO: APAGA UM CAMPO, UMA COLUNA. EX:alter table cursos drop column idcurso;	
+PARAMETRO: APAGA UM CAMPO, UMA COLUNA. EX:alter table cursos drop column idcurso;
 
-dml = data manipulattion language 
+dml = data manipulattion language
 INSERT INTO
-UPDATE 
+UPDATE
 DELETE
-TRUNCATE 
+TRUNCATE
 
-dql = data query language 
+dql = data query language
 SELECT
 
 #==#===#====#===#==#===#====#===#==#===#====#===ModoTerminal#==#===#====#===#==#===#====#===#==#===#====#===
 
 mysql -h localhost -u root -p
+
 --> senha da configuraçao
 
 mysql      -- evocamos o servidor
@@ -32,17 +33,17 @@ exit --> sair do MySQL
 
 status ---> verifica qual databases esta sendo usado no momento
 
-Current database:	cadastro --> mostra qual esta 
+Current database:	cadastro --> mostra qual esta
 
 \! cls no windows --> limpa a tela
 
 \! clear no linux --> limpa a tela
 
-mysqldump -u root -p exemplo(o banco que quer fazer copia) > /home/vinicius/dumps/exemplo.sql(caminho que quer salvar)  --> fazer bkp do banco 
+mysqldump -u root -p exemplo(o banco que quer fazer copia) > /home/vinicius/dumps/exemplo.sql(caminho que quer salvar)  --> fazer bkp do banco
 
-mysqldump -u root -p exemplo < /home/vinicius/dumps/exemplo.sql --> importa o banco 
+mysqldump -u root -p exemplo < /home/vinicius/dumps/exemplo.sql --> importa o banco
 
 obs: --> toda string em sql é em aspa simples 'exemplo'.
 
 
-							
+
