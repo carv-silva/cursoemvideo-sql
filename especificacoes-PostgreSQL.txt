@@ -1,7 +1,14 @@
 sudo -u postgres psql
 
-SELECT datname FROM pg_database; --> lista todos os db 
+sudo -i -u postgres
 
+psql --> chamar o post
+
+\q --> sair do post
+
+SELECT datname FROM pg_database; --> lista todos os db
+
+\deu --> lista os usuarios criado no post
 \d --> Lista as tabelas contidas em sua base
 \d nome da tabela --> Descreve todos os atributos da tabela e suas propriedades
 \g --> Executa determinada query

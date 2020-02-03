@@ -325,3 +325,158 @@ and nascimento between '1990-01-01' and '2000-12-31';
 
 9 - select count(nome) from gafanhotos
 where sexo = 'F' and altura > 1.90;
+
+
+################--aula 13--###########
+
+select distinct carga from cursos
+order by carga; -- mostrando a diferenca entre distinct e group(agrupamento)
+
+select carga from cursos
+group by carga;
+
+select totaulas, count(*) from cursos
+group by totaulas
+order by totaulas;
+
+select carga, count(nome) from cursos
+group by carga
+having count(nome) > 3;
+
+select ano, count(*) from cursos
+where totaulas > 30
+group by ano
+having ano > 2013
+order by count(*) desc;
+
+select carga, count(*) from cursos
+where ano > 2015
+group by carga
+having carga > (select avg(carga) from cursos);
+
+exercs aula 13
+
+1 - "Uma lista com as profissao dos gafanhotos e seus
+respectivos gafanhotos e seus respectivos quantitativos"
+
+2 - "Quantos gafanhotos homens e quantas mulheres nasceram apos 01/jan/2005?"
+
+3 - "Uma lista com gafanhotos que nasceram fora do brasil, mostrando o pais de origem
+e o total de pessoas nascidas la.So nos interessam os paises que tiveram mais de 3 gafanhotos
+com essa nacionalidade"
+
+4 - "Uma lista agrupada pela altura dos gafanhotos, mostrando quantas pessoas pesam
+mais de 100kg e que estao acima da media de altura de todos os cadastrados"
+
+
+1 - select profissao,count(*) from gafanhotos
+group by profissao;
+
+2 - select sexo, count(sexo) from gafanhotos
+where nascimento > '2005-01-01'
+group by sexo;
+
+3 - select nacionalidade, count(*) from gafanhotos
+where nacionalidade != 'brasil'
+group by nacionalidade
+having count(nacionalidade) > 3;
+
+4 -select altura, count(*)from gafanhotos
+where peso > '100'
+group by altura
+having altura > (select avg(altura) from gafanhotos);
+
+
+
+ ##########---Aula 15  Chaves Estrangeiras e JOIN---############
+
+
+DESCRIBE cadastro.gafanhotos;
+alter table cadastro.gafanhotos add cursopreferido int; --> adicionando um valor na tabela
+
+---adicionando uma Foreign key---
+alter table gafanhotos
+add foreign key (cursopreferido)
+references cursos(idcurso);
+
+
+update cadastro.gafanhotos set cursopreferido = '6' where id = '1';
+
+
+select * from cadastro.gafanhotos;
+
+select * from cadastro.cursos;
+
+
+delete from cadastro.cursos
+where idcurso = '28';
+
+select nome, cursopreferido from gafanhotos; --> aparece nome e curso preferido
+
+select nome, ano from cursos;
+
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
+from gafanhotos inner JOIN cursos
+on cursos.idcurso = gafanhotos.cursopreferido
+ORDER by cadastro.gafanhotos.nome; --> aqui ele mostra nome e curso preferido da tabela gafanhotos
+--juntos com nome e ano da tabela cursos atraves do join
+
+
+---obs :: toda vez que usa o join tem que usar a causa On para falar das chaves
+
+---inner join faz a junção de duas tabelas ou mais --> faz a ligacao das linhas
+---gafanhotos que preferem cursos so
+
+---outer join considera todos os usuarios das tabelas pega
+---vc especifica ela como direita ou esquerda
+
+
+
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
+from gafanhotos left(right) outer JOIN cursos --> esqueda ou direita
+on cursos.idcurso = gafanhotos.cursopreferido;
+ORDER by cadastro.gafanhotos.nome;
+
+
+create table gafanhotos_assiste_curso(
+    id int not null auto_increment,
+    data date,
+    idgafanhoto int,
+    idcurso int,
+    primary key (id),
+    foreign key (idgafanhoto) references gafanhotos(id),
+    foreign key (idcurso) references cursos(idcurso),
+)default charset = utf8;
+
+
+insert into cadastro.gafanhotos_assiste_curso VALUES
+(DEFAULT, '2016-05-12', '1', '19'),
+(DEFAULT, '2015-12-22', '3', '6'),
+(DEFAULT, '2014-03-01', '22', '12');
+
+SELECT * FROM cadastro.gafanhotos_assiste_curso;
+
+select * from cadastro.gafanhotos g
+join cadastro.gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto;
+
+select g.nome, c.nome from cadastro.gafanhotos g
+join cadastro.gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto
+join cadastro.cursos c
+on c.idcurso = a.idcurso
+order by g.nome;
+
+
+select * from cadastro.gafanhotos gafanhotos
+join cadastro.gafanhotos.idgafanhoto(g)
+on gafanhotos_assiste_curso;
+
+
+
+
+
+
+
+
+
